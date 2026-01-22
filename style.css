@@ -1,54 +1,61 @@
 body {
     margin: 0;
-    padding: 0;
-    background: #000 url('Background.png') no-repeat center center fixed;
-    background-size: cover;
-    color: white;
-    font-family: Arial, sans-serif;
+    height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
+    background: url('Background.png') no-repeat center center fixed;
+    background-size: cover;
+    font-family: 'Segoe UI', sans-serif;
 }
 
-.container {
-    background: rgba(0, 0, 0, 0.7);
+.main-card {
+    background: rgba(20, 20, 20, 0.85);
     padding: 30px;
-    border-radius: 20px;
+    border-radius: 25px;
+    width: 320px;
     text-align: center;
-    width: 80%;
-    max-width: 400px;
+    backdrop-filter: blur(10px);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
 }
 
 .avatar {
-    width: 120px;
-    height: 120px;
+    width: 90px;
+    height: 90px;
     border-radius: 50%;
-    object-fit: cover;
-    border: 2px solid #444;
-    margin-bottom: 15px;
+    border: 2px solid #333;
+    margin-bottom: 10px;
 }
 
-.status {
-    color: #43b581; /* O güzel yeşil */
-    font-size: 15px;
-    margin-bottom: 30px;
-    font-weight: bold;
-}
+.online-status { color: #2ecc71; font-size: 11px; font-weight: bold; letter-spacing: 1px; margin: 5px 0; }
+h1 { margin: 5px 0; font-size: 28px; color: white; }
+.bio-text { color: #aaa; margin: 0; font-size: 14px; }
+.role-text { color: #666; font-size: 13px; margin: 10px 0 20px 0; }
 
-.links a {
+.btn {
     display: block;
-    color: #fff;
+    background: rgba(255, 255, 255, 0.05);
+    color: white;
     text-decoration: none;
-    margin: 15px 0;
-    font-size: 18px;
-    padding: 10px;
-    border: 1px solid #333;
+    padding: 12px;
+    margin: 10px 0;
     border-radius: 10px;
+    border: 1px solid #333;
     transition: 0.3s;
 }
 
-.links a:hover {
-    background: rgba(255, 255, 255, 0.1);
-    border-color: #888;
+.btn:hover { background: rgba(255, 255, 255, 0.1); }
+
+.spotify-card {
+    background: rgba(0, 0, 0, 0.5);
+    margin-top: 25px;
+    padding: 15px;
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    text-align: left;
 }
+
+.spotify-icon { width: 35px; margin-right: 15px; }
+.spotify-status { color: white; margin: 0; font-size: 14px; font-weight: bold; }
+.spotify-app { color: #888; margin: 0; font-size: 12px; }
