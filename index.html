@@ -4,37 +4,27 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
     <title>RazdaL</title>
 </head>
 <body>
 
-    <div id="overlay" onclick="baslat()">
-        <div class="glow-text">CLICK TO VIEW</div>
-    </div>
+    <div class="container">
+        <div class="profile-section">
+            <img src="logo.png" alt="RazdaL" class="avatar">
+            <h1>RazdaL</h1>
+            <p class="status">● RazdaL is online</p>
+        </div>
 
-    <div class="main-container">
-        <img src="logo.png" class="profile-pic">
-        <h1>RazdaL</h1>
-        <p class="typewriter">I am a <span id="text"></span></p>
-
-        <div class="social-links">
-            <a href="https://instagram.com/razdal01" target="_blank" class="btn insta">Instagram</a>
-            <a href="https://www.youtube.com/@RealRazdaL" target="_blank" class="btn youtube">YouTube</a> 
-            <a href="https://discord.com/users/razdalreal" target="_blank" class="btn discord">Discord: razdalreal</a>
+        <div class="links">
+            <a href="https://instagram.com/razdal01" target="_blank" class="link-btn">Instagram</a>
+            <a href="https://www.youtube.com/@RealRazdaL" target="_blank" class="link-btn">YouTube</a>
+            <a href="https://discord.com/users/razdalreal" target="_blank" class="link-btn">Discord</a>
         </div>
     </div>
 
-    <audio id="myAudio" loop>
+    <audio id="bgMusic" loop autoplay>
         <source src="muzik.mp3" type="audio/mpeg">
     </audio>
 
-    <div class="music-player">
-        <button onclick="sesiKis()">-</button>
-        <span id="vol">100</span>
-        <button onclick="sesiAc()">+</button>
-    </div>
-
-    <script src="script.js"></script>
 </body>
 </html>
