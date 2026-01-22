@@ -1,11 +1,10 @@
 body {
     margin: 0;
     padding: 0;
-    background-color: #050505; /* Derin siyah */
-    background: url('Background.png') no-repeat center center fixed;
+    background: #000 url('Background.png') no-repeat center center fixed;
     background-size: cover;
     color: white;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-family: Arial, sans-serif;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -13,43 +12,43 @@ body {
 }
 
 .container {
+    background: rgba(0, 0, 0, 0.7);
+    padding: 30px;
+    border-radius: 20px;
     text-align: center;
-    background: rgba(0, 0, 0, 0.6);
-    padding: 40px;
-    border-radius: 15px;
-    backdrop-filter: blur(5px);
+    width: 80%;
+    max-width: 400px;
 }
 
 .avatar {
-    width: 110px;
+    width: 120px;
+    height: 120px;
     border-radius: 50%;
+    object-fit: cover;
     border: 2px solid #444;
-    margin-bottom: 10px;
+    margin-bottom: 15px;
 }
 
 .status {
-    color: #43b581; /* Discord yeşili */
-    font-size: 14px;
-    margin-top: -10px;
+    color: #43b581; /* O güzel yeşil */
+    font-size: 15px;
+    margin-bottom: 30px;
     font-weight: bold;
-    letter-spacing: 1px;
 }
 
-.link-btn {
+.links a {
     display: block;
-    width: 180px;
-    margin: 15px auto;
-    padding: 10px;
-    color: #bbb;
+    color: #fff;
     text-decoration: none;
+    margin: 15px 0;
+    font-size: 18px;
+    padding: 10px;
     border: 1px solid #333;
-    border-radius: 5px;
-    transition: 0.3s ease;
-    background: rgba(255, 255, 255, 0.02);
+    border-radius: 10px;
+    transition: 0.3s;
 }
 
-.link-btn:hover {
+.links a:hover {
     background: rgba(255, 255, 255, 0.1);
-    color: #fff;
-    border-color: #666;
+    border-color: #888;
 }
