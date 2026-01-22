@@ -1,3 +1,9 @@
+// Sayfada herhangi bir yere tıklandığında müziği başlatır
 window.onclick = function() {
-    document.getElementById("bgMusic").play();
+    var audio = document.getElementById("bgMusic");
+    if (audio) {
+        audio.play().catch(function(error) {
+            console.log("Müzik çalma hatası:", error);
+        });
+    }
 }
