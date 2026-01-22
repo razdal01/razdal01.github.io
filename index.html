@@ -3,34 +3,67 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
     <title>RazdaL Bio</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 <body>
-    <div class="main-card">
-        <div class="profile-header">
+    <div class="profile-card">
+        <div class="banner"></div>
+        <div class="avatar-container">
             <img src="logo.png" class="avatar">
-            <p class="online-status">● RAZDAL IS ONLINE</p>
-            <h1>RazdaL</h1>
-            <p class="bio-text">Hardcore Gamer</p>
-            <p class="role-text">Role: Duelist</p>
+            <div class="status-dot"></div>
         </div>
 
-        <div class="button-group">
-            <a href="https://www.youtube.com/@RealRazdaL" target="_blank" class="btn">YouTube</a>
-            <a href="#" class="btn">Steam</a>
-            <a href="https://instagram.com/razdal01" target="_blank" class="btn">Instagram</a>
-        </div>
+        <div class="content">
+            <div class="names">
+                <h1>RazdaL</h1>
+                <p class="tagline">razdalreal</p>
+            </div>
 
-        <div class="spotify-card">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/1/19/Spotify_logo_without_text.svg" class="spotify-logo">
-            <div class="spotify-info">
-                <p class="spotify-status">RazdaL is silent...</p>
-                <p class="spotify-app">Spotify</p>
+            <div class="badges">
+                <img src="https://raw.githubusercontent.com/m6v7/discord-badges/main/badges/hypesquad_bravery.svg" title="HypeSquad Bravery">
+                <img src="https://raw.githubusercontent.com/m6v7/discord-badges/main/badges/nitro.svg" title="Nitro">
+            </div>
+
+            <div class="divider"></div>
+
+            <div class="section">
+                <h2>HAKKIMDA</h2>
+                <p>Hardcore Gamer | Duelist</p>
+            </div>
+
+            <div class="section">
+                <h2>SOSYAL MEDYA</h2>
+                <div class="social-grid">
+                    <a href="https://www.youtube.com/@RealRazdaL" target="_blank" class="social-item">
+                        <i class="fab fa-youtube"></i> YouTube
+                    </a>
+                    <a href="https://instagram.com/razdal01" target="_blank" class="social-item">
+                        <i class="fab fa-instagram"></i> Instagram
+                    </a>
+                    <a href="https://discord.com/users/razdalreal" target="_blank" class="social-item">
+                        <i class="fab fa-discord"></i> Discord
+                    </a>
+                </div>
+            </div>
+
+            <div class="spotify-box">
+                <div class="spotify-header">
+                    <i class="fab fa-spotify"></i>
+                    <span>LISTENING TO SPOTIFY</span>
+                </div>
+                <div class="spotify-body">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/1/19/Spotify_logo_without_text.svg" class="sp-logo">
+                    <div class="sp-info">
+                        <p class="song">RazdaL is silent...</p>
+                        <p class="artist">Spotify</p>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
-    
+
     <audio id="bgMusic" loop autoplay><source src="muzik.mp3" type="audio/mpeg"></audio>
     <script src="script.js"></script>
 </body>
