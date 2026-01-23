@@ -6,39 +6,81 @@
 
 body {
     height: 100vh;
-    background: #000 url("Background.png") center/cover no-repeat fixed;
+    background: url("Background.png") center/cover no-repeat fixed;
+    font-family: 'Minecraft', sans-serif;
     display: flex;
     justify-content: center;
     align-items: center;
-    font-family: 'Segoe UI', sans-serif;
-    color: #fff;
+    color: white;
+    overflow: hidden;
 }
 
-.container {
+/* CLICK SCREEN */
+#overlay {
+    position: fixed;
+    inset: 0;
+    background: black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    z-index: 10;
+}
+
+#overlay span {
+    font-size: 22px;
+    opacity: 0.8;
+    animation: blink 1.4s infinite;
+}
+
+@keyframes blink {
+    0%,100% { opacity: 0.3; }
+    50% { opacity: 1; }
+}
+
+/* CARD */
+.card {
     text-align: center;
+    background: rgba(0,0,0,0.55);
+    backdrop-filter: blur(10px);
+    padding: 32px 44px;
+    border-radius: 14px;
+    opacity: 0;
+    transform: scale(0.96);
+    transition: 0.6s ease;
+}
+
+.card.show {
+    opacity: 1;
+    transform: scale(1);
+}
+
+.logo {
+    width: 90px;
+    border-radius: 50%;
+    margin-bottom: 14px;
 }
 
 h1 {
-    font-size: 42px;
-    margin-bottom: 8px;
+    font-size: 34px;
+    margin-bottom: 6px;
 }
 
 .tagline {
-    font-size: 14px;
-    opacity: 0.7;
-    margin-bottom: 18px;
+    font-size: 13px;
+    opacity: 0.65;
+    margin-bottom: 22px;
 }
 
 .links a {
-    color: #fff;
-    font-size: 24px;
+    color: white;
+    font-size: 22px;
     margin: 0 10px;
-    opacity: 0.8;
+    opacity: 0.75;
     transition: 0.2s;
 }
 
 .links a:hover {
     opacity: 1;
-    transform: scale(1.2);
-    color: #1db954;
+    transform: scale(1.25);
 }
