@@ -1,149 +1,126 @@
-:root {
-    --bg: #0a0a0a;
-    --card: #1e1f22;
-    --text: #fff;
-    --muted: #b5bac1;
-    --online: #23a55a;
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
-* { box-sizing: border-box; }
-
 body {
-    margin: 0;
     font-family: 'Segoe UI', sans-serif;
-    background: url('Background.png') center/cover fixed no-repeat;
+    height: 100vh;
+    background: url("Background.png") center/cover no-repeat fixed;
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
+    color: white;
+}
+
+/* DARK OVERLAY */
+body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.55);
+    backdrop-filter: blur(6px);
+    z-index: -1;
 }
 
 /* CLICK TO VIEW */
 #clickOverlay {
     position: fixed;
     inset: 0;
-    background: black;
-    z-index: 9999;
+    background: rgba(0,0,0,0.9);
     display: flex;
-    flex-direction: column;
     justify-content: center;
     align-items: center;
     cursor: pointer;
+    z-index: 999;
+    transition: opacity 0.6s ease, visibility 0.6s ease;
 }
 
 #clickOverlay.hide {
-    animation: fadeOut 1s forwards;
-}
-
-@keyframes fadeOut {
-    to { opacity: 0; visibility: hidden; }
-}
-
-.glitch {
-    color: white;
-    font-size: 28px;
-    letter-spacing: 6px;
-    animation: glitch 1.5s infinite;
-}
-
-@keyframes glitch {
-    0% { text-shadow: 2px 0 red, -2px 0 blue; }
-    50% { text-shadow: -2px 0 red, 2px 0 blue; }
-    100% { text-shadow: 2px 0 red, -2px 0 blue; }
-}
-
-.loading-bar {
-    width: 200px;
-    height: 4px;
-    background: #222;
-    margin-top: 20px;
-    overflow: hidden;
-}
-
-.loading-fill {
-    width: 0;
-    height: 100%;
-    background: white;
-    animation: load 2s infinite;
-}
-
-@keyframes load {
-    from { width: 0; }
-    to { width: 100%; }
-}
-
-.access-text {
-    color: #0f0;
-    margin-top: 14px;
-    font-size: 12px;
     opacity: 0;
-    animation: blink 2s infinite;
+    visibility: hidden;
 }
 
-@keyframes blink {
-    50% { opacity: 1; }
+.click-text {
+    font-size: 20px;
+    letter-spacing: 4px;
+    opacity: 0.8;
 }
 
 /* CARD */
 .profile-card {
-    width: 340px;
-    background: rgba(30,31,34,0.95);
-    border-radius: 16px;
-    overflow: hidden;
+    width: 420px;
+    background: rgba(15,15,15,0.85);
+    backdrop-filter: blur(12px);
+    border-radius: 20px;
+    padding: 32px;
+    text-align: center;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.8);
     opacity: 0;
-    transform: translateY(20px);
-    animation: show 1s forwards;
-    animation-delay: 0.8s;
+    transform: scale(0.97);
+    animation: show 0.8s ease forwards;
+    animation-delay: 0.4s;
 }
 
 @keyframes show {
-    to { opacity: 1; transform: translateY(0); }
-}
-
-.banner { height: 60px; background: #2b2d31; }
-
-.avatar-container {
-    position: relative;
-    margin-top: -45px;
-    margin-left: 16px;
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
 }
 
 .avatar {
-    width: 80px;
-    height: 80px;
+    width: 90px;
+    height: 90px;
     border-radius: 50%;
-    border: 6px solid #1e1f22;
+    margin-bottom: 16px;
+    object-fit: cover;
 }
 
-.status-dot {
-    position: absolute;
-    bottom: 8px;
-    right: 8px;
-    width: 16px;
-    height: 16px;
-    background: var(--online);
-    border-radius: 50%;
-    border: 4px solid #1e1f22;
+h1 {
+    font-size: 22px;
+    margin-bottom: 4px;
 }
 
-.content { padding: 16px; color: var(--text); }
+.username {
+    font-size: 14px;
+    opacity: 0.7;
+    margin-bottom: 16px;
+}
 
-.divider { height: 1px; background: #333; margin: 12px 0; }
+.bio {
+    font-size: 15px;
+    margin-bottom: 20px;
+    min-height: 20px;
+}
 
-.social-item {
-    background: #2b2d31;
-    padding: 10px;
-    border-radius: 6px;
-    color: white;
-    text-decoration: none;
+/* SOCIALS */
+.socials {
     display: flex;
-    gap: 10px;
-    margin-top: 6px;
+    justify-content: center;
+    gap: 18px;
+    margin-bottom: 22px;
 }
 
-.spotify-box {
-    margin-top: 14px;
-    background: #111;
-    padding: 10px;
-    border-radius: 8px;
+.socials a {
+    color: white;
+    font-size: 20px;
+    opacity: 0.8;
+    transition: 0.2s;
+}
+
+.socials a:hover {
+    opacity: 1;
+    transform: scale(1.1);
+}
+
+/* SPOTIFY MINI */
+.spotify {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    font-size: 13px;
+    opacity: 0.6;
 }
