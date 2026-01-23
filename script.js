@@ -10,10 +10,6 @@ overlay.addEventListener("click", () => {
     bgMusic.volume = 0.6;
     bgMusic.play().catch(() => {});
 
-    overlay.style.opacity = "0";
-
-    setTimeout(() => {
-        overlay.style.display = "none";
-        card.classList.add("show");
-    }, 400);
+    overlay.style.display = "none";
+    card.classList.add("show");
 });
