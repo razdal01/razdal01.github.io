@@ -13,12 +13,17 @@ overlay.addEventListener("click", () => {
     overlay.classList.add("hide");
 });
 
-// VISITOR COUNTER
-fetch("https://api.countapi.xyz/hit/razdal01-profile/visits")
+// VISITOR COUNTER (COUNTAPI)
+const namespace = "razdal01-github";
+const key = "visitors";
+
+fetch(`https://api.countapi.xyz/hit/${namespace}/${key}`)
     .then(res => res.json())
     .then(data => {
         document.getElementById("visitorCount").innerText = data.value;
     })
-    .catch(() => {
-        document.getElementById("visitorCount").innerText = "-";
+    .catch(err => {
+        console.error(err);
+        document.getElementById("visitorCount").innerText = "0";
     });
+
