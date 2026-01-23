@@ -6,122 +6,39 @@
 
 body {
     height: 100vh;
+    background: #000 url("Background.png") center/cover no-repeat fixed;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     font-family: 'Segoe UI', sans-serif;
-    background: url("Background.png") center / cover no-repeat fixed;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    color: white;
+    color: #fff;
 }
 
-/* DARK CINEMATIC OVERLAY */
-body::before {
-    content: "";
-    position: fixed;
-    inset: 0;
-    background: rgba(0,0,0,0.55);
-    backdrop-filter: blur(6px);
-    z-index: -1;
-}
-
-/* CLICK TO VIEW */
-#clickOverlay {
-    position: fixed;
-    inset: 0;
-    background: rgba(0,0,0,0.9);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    cursor: pointer;
-    z-index: 9999;
-    transition: opacity 0.6s ease, visibility 0.6s ease;
-}
-
-#clickOverlay.hide {
-    opacity: 0;
-    visibility: hidden;
-}
-
-.click-text {
-    font-size: 20px;
-    letter-spacing: 4px;
-    opacity: 0.8;
-}
-
-/* PROFILE CARD */
-.profile-card {
-    width: 420px;
-    background: rgba(15,15,15,0.85);
-    backdrop-filter: blur(12px);
-    border-radius: 20px;
-    padding: 32px;
+.container {
     text-align: center;
-    box-shadow: 0 20px 60px rgba(0,0,0,0.8);
-
-    /* BAŞTA GİZLİ */
-    opacity: 0;
-    pointer-events: none;
-    transform: scale(0.97);
-    transition: opacity 0.6s ease, transform 0.6s ease;
-}
-
-.profile-card.show {
-    opacity: 1;
-    pointer-events: auto;
-    transform: scale(1);
-}
-
-.avatar {
-    width: 90px;
-    height: 90px;
-    border-radius: 50%;
-    object-fit: cover;
-    margin-bottom: 16px;
 }
 
 h1 {
-    font-size: 22px;
-    margin-bottom: 4px;
+    font-size: 42px;
+    margin-bottom: 8px;
 }
 
-.username {
+.tagline {
     font-size: 14px;
     opacity: 0.7;
-    margin-bottom: 16px;
+    margin-bottom: 18px;
 }
 
-.bio {
-    font-size: 15px;
-    margin-bottom: 22px;
-    min-height: 20px;
-}
-
-/* SOCIAL ICONS */
-.socials {
-    display: flex;
-    justify-content: center;
-    gap: 18px;
-    margin-bottom: 22px;
-}
-
-.socials a {
-    color: white;
-    font-size: 20px;
-    opacity: 0.75;
+.links a {
+    color: #fff;
+    font-size: 24px;
+    margin: 0 10px;
+    opacity: 0.8;
     transition: 0.2s;
 }
 
-.socials a:hover {
+.links a:hover {
     opacity: 1;
-    transform: scale(1.1);
-}
-
-/* SPOTIFY MINI */
-.spotify {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 8px;
-    font-size: 13px;
-    opacity: 0.6;
+    transform: scale(1.2);
+    color: #1db954;
 }
