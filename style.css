@@ -2,94 +2,96 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    font-family: 'Minecraftia', monospace;
 }
 
 body {
     height: 100vh;
-    background: url("Background.png") center/cover no-repeat fixed;
-    font-family: 'Minecraft', sans-serif;
+    background: url("Background.png") center/cover no-repeat;
     display: flex;
-    justify-content: center;
     align-items: center;
+    justify-content: center;
     color: white;
-    overflow: hidden;
 }
 
-/* CLICK TO VIEW */
+/* OVERLAY */
 #overlay {
     position: fixed;
     inset: 0;
     background: black;
     display: flex;
-    justify-content: center;
     align-items: center;
+    justify-content: center;
+    z-index: 9999;
     cursor: pointer;
-    z-index: 999;
 }
 
-#overlay span {
-    font-size: 22px;
-    opacity: 0.8;
-    animation: blink 1.4s infinite;
+#overlay.hide {
+    opacity: 0;
+    pointer-events: none;
+    transition: 0.4s ease;
+}
+
+.click-text {
+    font-size: 36px;
+    animation: blink 1.5s infinite;
 }
 
 @keyframes blink {
-    0%,100% { opacity: 0.3; }
-    50% { opacity: 1; }
+    0% { opacity: 1; }
+    50% { opacity: 0.4; }
+    100% { opacity: 1; }
 }
 
 /* CARD */
-.card {
-    background: rgba(0,0,0,0.6);
-    backdrop-filter: blur(14px);
-    padding: 34px 46px;
-    border-radius: 16px;
+.container {
     text-align: center;
-    opacity: 0;
-    transform: scale(0.95);
-    transition: 0.6s ease;
 }
 
-.card.show {
-    opacity: 1;
-    transform: scale(1);
+.card {
+    background: rgba(0, 0, 0, 0.6);
+    padding: 30px 40px;
+    border-radius: 12px;
+    backdrop-filter: blur(8px);
 }
 
 .logo {
     width: 110px;
-    border-radius: 50%;
-    margin-bottom: 16px;
-}
-
-h1 {
-    font-size: 32px;
-    margin-bottom: 6px;
+    margin-bottom: 15px;
 }
 
 .username {
+    opacity: 0.8;
     font-size: 13px;
-    opacity: 0.6;
 }
 
 .status {
-    margin-top: 8px;
-    font-size: 14px;
-    opacity: 0.8;
+    margin-top: 6px;
+    font-size: 12px;
+    opacity: 0.6;
 }
 
+/* LINKS */
 .links {
-    margin-top: 22px;
+    margin-top: 18px;
+    display: flex;
+    gap: 20px;
+    justify-content: center;
 }
 
 .links a {
     color: white;
     font-size: 22px;
-    margin: 0 12px;
-    opacity: 0.75;
     transition: 0.2s;
 }
 
 .links a:hover {
-    opacity: 1;
-    transform: scale(1.25);
+    opacity: 0.6;
+}
+
+/* VISITOR */
+.visitor {
+    margin-top: 20px;
+    font-size: 12px;
+    opacity: 0.6;
 }
