@@ -1,13 +1,21 @@
 const overlay = document.getElementById("clickOverlay");
+const card = document.querySelector(".profile-card");
 const bgMusic = document.getElementById("bgMusic");
 const clickSound = document.getElementById("clickSound");
 
 /* CLICK TO VIEW */
 overlay.addEventListener("click", () => {
-    clickSound.play().catch(()=>{});
+    // click sesi
+    clickSound.currentTime = 0;
+    clickSound.play().catch(() => {});
+
+    // müzik
     bgMusic.volume = 0.6;
-    bgMusic.play().catch(()=>{});
+    bgMusic.play().catch(() => {});
+
+    // geçiş
     overlay.classList.add("hide");
+    card.classList.add("show");
 });
 
 /* TYPING BIO */
@@ -17,7 +25,9 @@ const texts = [
     "Minimal. Calm. Focused."
 ];
 
-let i = 0, j = 0, deleting = false;
+let i = 0;
+let j = 0;
+let deleting = false;
 const el = document.getElementById("typingText");
 
 function type() {
@@ -34,6 +44,11 @@ function type() {
 type();
 
 /* FAKE SPOTIFY */
-const songs = ["Night Drive", "After Midnight", "Silent Roads"];
+const songs = [
+    "Night Drive",
+    "After Midnight",
+    "Silent Roads"
+];
+
 document.getElementById("songName").textContent =
     songs[Math.floor(Math.random() * songs.length)];
