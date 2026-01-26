@@ -6,47 +6,36 @@
     <title>Razdal</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     <link rel="stylesheet" href="https://fonts.cdnfonts.com/css/minecraftia">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;500&family=Dancing+Script:wght@600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&family=Dancing+Script:wght@600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
 <body class="dark-theme">
-
     <div id="cursor"></div>
     <div id="cursor-blur"></div>
-
     <div id="night-bg"></div>
-
-    <div id="overlay">
-        <span class="click-text">CLICK TO VIEW</span>
-    </div>
+    <div id="overlay"><span class="click-text">CLICK TO VIEW</span></div>
 
     <div class="container">
         <div class="card">
             <button id="muteBtn"><i class="fas fa-volume-up"></i></button>
             <button id="themeBtn">☀️</button>
-            
             <img src="logo.png" class="logo">
             <h1>Razdal</h1>
             <p class="username">@razdalreal</p>
-            
             <div class="mood-section">
                 <p class="mood-title">Şu sıralar modum:</p>
                 <p class="mood-text" id="typewriter"></p>
             </div>
-
             <div class="links">
                 <a href="https://www.youtube.com/@RealRazdal" target="_blank"><i class="fab fa-youtube"></i></a>
                 <a href="https://instagram.com/razdal01" target="_blank"><i class="fab fa-instagram"></i></a>
                 <a href="https://discord.gg/75PWq8aZfx" target="_blank"><i class="fab fa-discord"></i></a>
             </div>
-
             <p class="visitor">Visitors: <span id="visitorCount">...</span></p>
         </div>
     </div>
-
     <audio id="clickSound" src="click.mp3"></audio>
     <audio id="bgMusic" src="muzik.mp3" loop></audio>
-
     <script src="script.js"></script>
 </body>
 </html>
