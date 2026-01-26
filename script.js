@@ -44,3 +44,15 @@ overlay.onclick = () => {
 
   updateVisitors();
 };
+
+const themeBtn = document.getElementById("themeBtn");
+
+themeBtn.onclick = () => {
+  document.body.classList.toggle("light");
+
+  if (document.body.classList.contains("light")) {
+    themeBtn.textContent = "☀️";
+  } else {
+    themeBtn.textContent = "🌙";
+  }
+};
