@@ -13,19 +13,28 @@ body {
     align-items: center;
     color: white;
     overflow: hidden;
-    transition: background 0.6s ease, color 0.6s ease;
+    /* Tema geçiş hızı */
+    transition: background-color 0.8s ease, color 0.8s ease;
+    position: relative;
 }
 
-/* Lacivert Filtre */
-body.dark-theme::before {
+/* Lacivert Filtre Katmanı */
+body::before {
     content: "";
     position: fixed;
     inset: 0;
-    background: rgba(0, 15, 40, 0.8);
+    background: rgba(0, 15, 40, 0.85);
     z-index: -1;
+    transition: background-color 0.8s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.8s ease;
 }
 
-/* CLICK TO VIEW EKRANI */
+/* Gündüz Modu Filtre Değişimi */
+body.light-theme::before {
+    background: rgba(255, 255, 255, 0.1);
+    opacity: 0.2;
+}
+
+/* Click to View Ekranı */
 #overlay {
     position: fixed;
     inset: 0;
@@ -35,11 +44,9 @@ body.dark-theme::before {
     align-items: center;
     cursor: pointer;
     z-index: 9999;
-    opacity: 1;
     transition: opacity 0.8s ease, visibility 0.8s ease;
 }
 
-/* Tıklandıktan sonra gizleme class'ı */
 #overlay.hidden {
     opacity: 0;
     visibility: hidden;
@@ -51,38 +58,48 @@ body.dark-theme::before {
     color: white;
 }
 
-/* ANA İÇERİK */
+/* İçerik Konteyner */
 .container {
     opacity: 0;
-    transform: scale(0.9);
-    transition: all 0.8s ease-out;
-    z-index: 1;
+    transform: scale(0.95);
+    transition: opacity 1s ease, transform 1s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
-/* Giriş yapınca içeriği göster */
 .container.active {
     opacity: 1;
     transform: scale(1);
 }
 
+/* Profil Kartı */
 .card {
-    background: rgba(0, 0, 0, 0.6);
+    background: rgba(0, 0, 0, 0.65);
     padding: 30px 40px;
     border-radius: 20px;
     text-align: center;
-    backdrop-filter: blur(10px);
-    border: 1px solid rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.15);
     position: relative;
+    transition: background 0.8s ease, color 0.8s ease, box-shadow 0.8s ease, transform 0.3s ease;
+}
+
+body.light-theme .card {
+    background: rgba(255, 255, 255, 0.8);
+    color: #111;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
 }
 
 .logo {
     width: 120px;
     border-radius: 50%;
     margin-bottom: 15px;
+    transition: transform 0.5s ease;
 }
 
+.card:hover .logo { transform: rotate(5deg) scale(1.05); }
+
 .username { opacity: 0.7; }
-.status { margin-top: 10px; margin-bottom: 20px; }
+.status { margin-top: 10px; margin-bottom: 20px; font-size: 14px; }
 
 .links {
     display: flex;
@@ -92,28 +109,33 @@ body.dark-theme::before {
 }
 
 .links a {
-    color: white;
+    color: inherit;
     font-size: 26px;
     text-decoration: none;
-    transition: 0.3s;
+    transition: transform 0.3s ease, color 0.3s ease;
 }
 
 .links a:hover { transform: scale(1.2); }
+body.dark-theme .links a:hover { color: #00a2ff; }
 
+.visitor { opacity: 0.7; margin-top: 10px; font-size: 12px; }
+
+/* Tema Butonu */
 #themeBtn {
     position: absolute;
     top: 15px;
     right: 15px;
     background: none;
     border: none;
-    font-size: 20px;
+    font-size: 22px;
     cursor: pointer;
-    color: white;
+    color: inherit;
+    transition: transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
-/* Light Mode */
-body.light-theme { background-color: #eee !important; color: #000; }
-body.light-theme::before { display: none; }
-body.light-theme .card { background: rgba(255,255,255,0.8); color: #000; }
-body.light-theme .links a { color: #000; }
-body.light-theme #themeBtn { color: #000; }
+#themeBtn:active { transform: scale(0.8) rotate(180deg); }
+
+/* Light Mode Global Renk Ayarı */
+body.light-theme {
+    background-color: #f5f5f5;
+}
