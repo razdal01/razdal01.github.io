@@ -8,19 +8,14 @@ const themeBtn = document.getElementById("themeBtn");
 const SUPABASE_URL = "https://thlhymoqiiohoosxngjg.supabase.co";
 const SUPABASE_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InRobGh5bW9xaWlvaG9vc3huZ2pnIiwicm9sZSI6ImFub24iLCJpYXQiOjE3Njk0MTI5NzUsImV4cCI6MjA4NDk4ODk3NX0.cqyxKvGKrfJrfbAh_yx0AygHynwWSVaZa1kg713ZdJg";
 
-// Ziyaretçi Sayacı
+// Sayaç Fonksiyonu
 async function updateVisitors() {
     try {
         const res = await fetch(`${SUPABASE_URL}/rest/v1/visitors?id=eq.1&select=count`, {
-            headers: {
-                apikey: SUPABASE_KEY,
-                Authorization: `Bearer ${SUPABASE_KEY}`
-            }
+            headers: { apikey: SUPABASE_KEY, Authorization: `Bearer ${SUPABASE_KEY}` }
         });
-
         const data = await res.json();
-        let currentCount = data[0].count;
-        let newCount = currentCount + 1;
+        let count = data[0].count + 1;
 
         await fetch(`${SUPABASE_URL}/rest/v1/visitors?id=eq.1`, {
             method: "PATCH",
@@ -29,32 +24,29 @@ async function updateVisitors() {
                 Authorization: `Bearer ${SUPABASE_KEY}`,
                 "Content-Type": "application/json"
             },
-            body: JSON.stringify({ count: newCount })
+            body: JSON.stringify({ count })
         });
-
-        visitorText.textContent = newCount;
-    } catch (err) {
-        console.error("Sayaç hatası:", err);
+        visitorText.textContent = count;
+    } catch {
         visitorText.textContent = "error";
     }
 }
 
-// Giriş Ekranı Tıklama
+// TIKLAMA OLAYI
 overlay.onclick = () => {
-    overlay.style.opacity = "0";
-    setTimeout(() => {
-        overlay.style.display = "none";
-        container.style.display = "block";
-    }, 500);
-
+    // Önce müzikleri başlat (Tarayıcı engeline takılmamak için en üstte)
     clickSound.play().catch(() => {});
-    bgMusic.volume = 0.5;
     bgMusic.play().catch(() => {});
 
+    // Görsel geçişi yap
+    overlay.classList.add("hidden");
+    container.classList.add("active");
+
+    // Sayacı güncelle
     updateVisitors();
 };
 
-// Tema Değiştirme (Lacivert Efektli)
+// TEMA DEĞİŞTİRME
 themeBtn.onclick = () => {
     document.body.classList.toggle("light-theme");
     document.body.classList.toggle("dark-theme");
