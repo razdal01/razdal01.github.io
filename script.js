@@ -29,15 +29,15 @@ function fadeAudio(targetVolume) {
     }, 50);
 }
 
-// ANA GİRİŞ (SINIFLI & FLOWLU)
+// GİRİŞ
 if (overlay) {
     overlay.onclick = () => {
         clickSound.play().catch(e => {});
         bgMusic.volume = 0; bgMusic.play().catch(e => {});
         fadeAudio(0.5);
 
-        overlay.classList.add("hidden"); // CSS'teki flowu tetikler
-        setTimeout(() => { container.classList.add("active"); }, 200); // Kartı getirir
+        overlay.classList.add("hidden");
+        setTimeout(() => { container.classList.add("active"); }, 200);
 
         type();
         updateVisitors();
