@@ -21,10 +21,10 @@ document.addEventListener("mousemove", (e) => {
 
 // TYPEWRITER YAZILARI
 const texts = [
-    "Sessiz yollarda, kendi ritmimde...",
-    "Her yeni gün, yeni bir hikaye.",
-    "Karanlık çöker, ama ışık bitmez.",
-    "Razdal Real - Road to 2026"
+    "Demeyi unutmuşum bana bu linklerden birinden ulaşabilirsin!",
+    "gayet iyiyim",
+    "Bana abune olsana",
+    
 ];
 let textIndex = 0, charIndex = 0, isDeleting = false;
 
