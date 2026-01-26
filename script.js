@@ -19,7 +19,7 @@ document.addEventListener("mousemove", (e) => {
 });
 
 // TYPEWRITER
-const texts = ["Demeyi unuttum da aşağıdakilerden bana ulasabilirsin!","İyiyim","Sansar dinliyorum artık sen düşün",":D",".d"];
+const texts = ["Domo toranaga makarameso anjinsen hayt","Demeyi unuttum da aşağıdakilerden bana ulasabilirsin!","İyiyim","Sansar dinliyorum artık sen düşün",":D",".d"];
 let textIndex = 0, charIndex = 0, isDeleting = false;
 function type() {
     const currentText = texts[textIndex];
