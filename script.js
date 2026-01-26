@@ -1,64 +1,50 @@
-const overlay = document.getElementById("overlay");
-const container = document.querySelector(".container");
-const bgMusic = document.getElementById("bgMusic");
-const clickSound = document.getElementById("clickSound");
-const visitorText = document.getElementById("visitorCount");
-const themeBtn = document.getElementById("themeBtn");
-const muteBtn = document.getElementById("muteBtn");
-const typewriterElement = document.getElementById("typewriter");
-const cursor = document.getElementById("cursor");
-const cursorBlur = document.getElementById("cursor-blur");
+const overlay = document.getElementById("overlay"),
+      container = document.querySelector(".container"),
+      bgMusic = document.getElementById("bgMusic"),
+      clickSound = document.getElementById("clickSound"),
+      visitorText = document.getElementById("visitorCount"),
+      themeBtn = document.getElementById("themeBtn"),
+      muteBtn = document.getElementById("muteBtn"),
+      typewriterElement = document.getElementById("typewriter"),
+      cursor = document.getElementById("cursor"),
+      cursorBlur = document.getElementById("cursor-blur");
 
-const SUPABASE_URL = "https://thlhymoqiiohoosxngjg.supabase.co";
-const SUPABASE_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InRobGh5bW9xaWlvaG9vc3huZ2pnIiwicm9sZSI6ImFub24iLCJpYXQiOjE3Njk0MTI5NzUsImV4cCI6MjA4NDk4ODk3NX0.cqyxKvGKrfJrfbAh_yx0AygHynwWSVaZa1kg713ZdJg";
+const SUPABASE_URL = "https://thlhymoqiiohoosxngjg.supabase.co",
+      SUPABASE_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InRobGh5bW9xaWlvaG9vc3huZ2pnIiwicm9sZSI6ImFub24iLCJpYXQiOjE3Njk0MTI5NzUsImV4cCI6MjA4NDk4ODk3NX0.cqyxKvGKrfJrfbAh_yx0AygHynwWSVaZa1kg713ZdJg";
 
-// Fare Takibi
+// İMLEÇ
 document.addEventListener("mousemove", (e) => {
-    if(cursor) cursor.style.left = e.clientX + "px";
-    if(cursor) cursor.style.top = e.clientY + "px";
-    if(cursorBlur) cursorBlur.style.left = e.clientX + "px";
-    if(cursorBlur) cursorBlur.style.top = e.clientY + "px";
+    if(cursor) { cursor.style.left = e.clientX + "px"; cursor.style.top = e.clientY + "px"; }
+    if(cursorBlur) { cursorBlur.style.left = e.clientX + "px"; cursorBlur.style.top = e.clientY + "px"; }
 });
 
-// Ses Sistemi
+// SES FADE
 let isMuted = false;
 function fadeAudio(targetVolume) {
     let step = 0.05;
     let interval = setInterval(() => {
-        if (bgMusic.volume < targetVolume) {
-            bgMusic.volume = Math.min(bgMusic.volume + step, targetVolume);
-        } else {
-            bgMusic.volume = Math.max(bgMusic.volume - step, targetVolume);
-        }
+        if (bgMusic.volume < targetVolume) bgMusic.volume = Math.min(bgMusic.volume + step, targetVolume);
+        else bgMusic.volume = Math.max(bgMusic.volume - step, targetVolume);
         if (parseFloat(bgMusic.volume.toFixed(2)) === targetVolume) clearInterval(interval);
     }, 50);
 }
 
-// Ana Giriş Fonksiyonu (DÜZELTİLDİ)
+// ANA GİRİŞ (SINIFLI & FLOWLU)
 if (overlay) {
     overlay.onclick = () => {
-        // 1. Sesleri başlat
-        clickSound.play().catch(e => console.log("Ses hatası"));
-        bgMusic.volume = 0;
-        bgMusic.play().catch(e => console.log("Müzik hatası"));
+        clickSound.play().catch(e => {});
+        bgMusic.volume = 0; bgMusic.play().catch(e => {});
         fadeAudio(0.5);
 
-        // 2. Overlay'i zorla kapat (Garanti yöntem)
-        overlay.style.opacity = "0";
-        setTimeout(() => {
-            overlay.style.display = "none"; 
-        }, 800);
+        overlay.classList.add("hidden"); // CSS'teki flowu tetikler
+        setTimeout(() => { container.classList.add("active"); }, 200); // Kartı getirir
 
-        // 3. İçeriği göster
-        if (container) container.classList.add("active");
-
-        // 4. Diğer işleri başlat
         type();
         updateVisitors();
     };
 }
 
-// Typewriter
+// TYPEWRITER
 const texts = ["Domo toranaga makarameso anjinsen hayt","Demeyi unuttum da aşağıdakilerden bana ulasabilirsin!","İyiyim","Sansar dinliyorum artık sen düşün",":D",".d"]
 let textIndex = 0, charIndex = 0, isDeleting = false;
 
@@ -73,38 +59,18 @@ function type() {
     setTimeout(type, speed);
 }
 
-// Mute Butonu
-if (muteBtn) {
-    muteBtn.onclick = (e) => {
-        e.stopPropagation();
-        isMuted = !isMuted;
-        fadeAudio(isMuted ? 0 : 0.5);
-        muteBtn.innerHTML = isMuted ? '<i class="fas fa-volume-mute"></i>' : '<i class="fas fa-volume-up"></i>';
-    };
-}
+// BUTONLAR
+muteBtn.onclick = (e) => { e.stopPropagation(); isMuted = !isMuted; fadeAudio(isMuted ? 0 : 0.5); muteBtn.innerHTML = isMuted ? '<i class="fas fa-volume-mute"></i>' : '<i class="fas fa-volume-up"></i>'; };
+themeBtn.onclick = (e) => { e.stopPropagation(); document.body.classList.toggle("light-theme"); document.body.classList.toggle("dark-theme"); themeBtn.textContent = document.body.classList.contains("light-theme") ? "🌙" : "☀️"; };
 
-// Tema Butonu
-if (themeBtn) {
-    themeBtn.onclick = (e) => {
-        e.stopPropagation();
-        document.body.classList.toggle("light-theme");
-        document.body.classList.toggle("dark-theme");
-        themeBtn.textContent = document.body.classList.contains("light-theme") ? "🌙" : "☀️";
-    };
-}
-
-// Sayaç
+// SAYAÇ
 async function updateVisitors() {
     try {
         const res = await fetch(`${SUPABASE_URL}/rest/v1/visitors?id=eq.1`, { headers: { "apikey": SUPABASE_KEY, "Authorization": `Bearer ${SUPABASE_KEY}` } });
         const data = await res.json();
         if (data && data.length > 0) {
             let newCount = data[0].count + 1;
-            await fetch(`${SUPABASE_URL}/rest/v1/visitors?id=eq.1`, {
-                method: "PATCH",
-                headers: { "apikey": SUPABASE_KEY, "Authorization": `Bearer ${SUPABASE_KEY}`, "Content-Type": "application/json" },
-                body: JSON.stringify({ count: newCount })
-            });
+            await fetch(`${SUPABASE_URL}/rest/v1/visitors?id=eq.1`, { method: "PATCH", headers: { "apikey": SUPABASE_KEY, "Authorization": `Bearer ${SUPABASE_KEY}`, "Content-Type": "application/json" }, body: JSON.stringify({ count: newCount }) });
             if(visitorText) visitorText.textContent = newCount;
         }
     } catch (e) { if(visitorText) visitorText.textContent = "err"; }
