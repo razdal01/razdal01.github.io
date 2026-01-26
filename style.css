@@ -82,6 +82,32 @@ body {
   margin-top: 10px;
 }
 
+#themeBtn {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  background: none;
+  border: none;
+  font-size: 20px;
+  cursor: pointer;
+  color: white;
+}
+
+body.light {
+  background: #eee !important;
+  color: black;
+}
+
+body.light .card {
+  background: rgba(255,255,255,0.7);
+  color: black;
+}
+
+body.light #themeBtn {
+  color: black;
+}
+
+
 
 
 
