@@ -8,7 +8,7 @@ const themeBtn = document.getElementById("themeBtn");
 const SUPABASE_URL = "https://thlhymoqiiohoosxngjg.supabase.co";
 const SUPABASE_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InRobGh5bW9xaWlvaG9vc3huZ2pnIiwicm9sZSI6ImFub24iLCJpYXQiOjE3Njk0MTI5NzUsImV4cCI6MjA4NDk4ODk3NX0.cqyxKvGKrfJrfbAh_yx0AygHynwWSVaZa1kg713ZdJg";
 
-// Sayaç Fonksiyonu
+// Sayaç Sistemi
 async function updateVisitors() {
     try {
         const res = await fetch(`${SUPABASE_URL}/rest/v1/visitors?id=eq.1&select=count`, {
@@ -28,32 +28,36 @@ async function updateVisitors() {
         });
         visitorText.textContent = count;
     } catch {
-        visitorText.textContent = "error";
+        visitorText.textContent = "err";
     }
 }
 
-// TIKLAMA OLAYI
+// Giriş Fonksiyonu
 overlay.onclick = () => {
-    // Önce müzikleri başlat (Tarayıcı engeline takılmamak için en üstte)
     clickSound.play().catch(() => {});
+    bgMusic.volume = 0.5;
     bgMusic.play().catch(() => {});
 
-    // Görsel geçişi yap
     overlay.classList.add("hidden");
     container.classList.add("active");
 
-    // Sayacı güncelle
     updateVisitors();
 };
 
-// TEMA DEĞİŞTİRME
+// Gelişmiş Tema Geçişi
 themeBtn.onclick = () => {
-    document.body.classList.toggle("light-theme");
-    document.body.classList.toggle("dark-theme");
+    // Hafif basma animasyonu için transform
+    themeBtn.style.transform = "scale(0.8)";
+    
+    setTimeout(() => {
+        document.body.classList.toggle("light-theme");
+        document.body.classList.toggle("dark-theme");
 
-    if (document.body.classList.contains("light-theme")) {
-        themeBtn.textContent = "🌙";
-    } else {
-        themeBtn.textContent = "☀️";
-    }
+        if (document.body.classList.contains("light-theme")) {
+            themeBtn.textContent = "🌙";
+        } else {
+            themeBtn.textContent = "☀️";
+        }
+        themeBtn.style.transform = "scale(1)";
+    }, 150);
 };
