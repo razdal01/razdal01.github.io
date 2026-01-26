@@ -1,58 +1,40 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>Razdal</title>
+<meta charset="UTF-8">
+<title>Razdal</title>
 
-    <!-- FONT AWESOME -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-
-    <!-- MINECRAFT FONT -->
-    <link rel="stylesheet" href="https://fonts.cdnfonts.com/css/minecraftia">
-
-    <link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<link rel="stylesheet" href="https://fonts.cdnfonts.com/css/minecraftia">
+<link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-<!-- CLICK TO VIEW -->
 <div id="overlay">
-    <span class="click-text">CLICK TO VIEW</span>
+  <span class="click-text">CLICK TO VIEW</span>
 </div>
 
-<!-- MAIN CARD -->
 <div class="container">
-    <div class="card">
+  <div class="card">
+    <img src="logo.png" class="logo">
 
-        <img src="logo.png" class="logo">
+    <h1>Razdal</h1>
+    <p class="username">@razdalreal</p>
+    <p class="status">Night • Silent Roads</p>
 
-        <h1>Razdal</h1>
-        <p class="username">@razdalreal</p>
-        <p class="status">Night • Silent Roads</p>
-
-        <div class="links">
-            <a href="https://www.youtube.com/@RealRazdal" target="_blank">
-                <i class="fab fa-youtube"></i>
-            </a>
-            <a href="https://instagram.com/razdal01" target="_blank">
-                <i class="fab fa-instagram"></i>
-            </a>
-            <a href="https://discord.com/users/razdalreal" target="_blank">
-                <i class="fab fa-discord"></i>
-            </a>
-        </div>
-
-        <p class="visitor">
-            Visitors: <span id="visitorCount">0</span>
-        </p>
-
+    <div class="links">
+      <a href="https://www.youtube.com/@RealRazdal" target="_blank"><i class="fab fa-youtube"></i></a>
+      <a href="https://instagram.com/razdal01" target="_blank"><i class="fab fa-instagram"></i></a>
+      <a href="https://discord.com/users/razdalreal" target="_blank"><i class="fab fa-discord"></i></a>
     </div>
+
+    <p class="visitor">Visitors: <span id="visitorCount">loading...</span></p>
+  </div>
 </div>
 
-<!-- AUDIO -->
 <audio id="clickSound" src="click.mp3"></audio>
 <audio id="bgMusic" src="muzik.mp3" loop></audio>
 
 <script src="script.js"></script>
 </body>
 </html>
-
