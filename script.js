@@ -7,7 +7,6 @@ const clickSound = document.getElementById("clickSound");
 
 async function updateVisitors() {
   try {
-    // mevcut değeri al
     const resGet = await fetch(`${SUPABASE_URL}/rest/v1/visitors?id=eq.1&select=count`, {
       headers: {
         apikey: SUPABASE_ANON_KEY,
@@ -19,7 +18,6 @@ async function updateVisitors() {
     let count = data[0].count;
     count++;
 
-    // güncelle
     await fetch(`${SUPABASE_URL}/rest/v1/visitors?id=eq.1`, {
       method: "PATCH",
       headers: {
@@ -42,11 +40,8 @@ async function updateVisitors() {
 overlay.addEventListener("click", () => {
   overlay.style.display = "none";
 
-  // click sesi
   if (clickSound) clickSound.play().catch(()=>{});
-  // arka plan müzik
   if (bgMusic) bgMusic.play().catch(()=>{});
 
-  // visitor artır
   updateVisitors();
 });
