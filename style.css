@@ -1,3 +1,4 @@
+/* GENEL AYARLAR */
 * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Minecraftia', sans-serif; cursor: none !important; }
 
 body {
@@ -6,12 +7,32 @@ body {
     color: white; overflow: hidden;
 }
 
-#night-bg { position: fixed; inset: 0; background: url("Background2.png") center/cover no-repeat fixed; z-index: -2; opacity: 0; transition: opacity 1.2s ease; }
+#night-bg { 
+    position: fixed; inset: 0; background: url("Background2.png") center/cover no-repeat fixed; 
+    z-index: -2; opacity: 0; transition: opacity 1.2s ease; 
+}
 body.dark-theme #night-bg { opacity: 1; }
+
+/* OVERLAY (FLOW BURADA) */
+#overlay {
+    position: fixed; inset: 0; background: #000;
+    display: flex; justify-content: center; align-items: center;
+    z-index: 9999;
+    transition: opacity 0.8s cubic-bezier(0.4, 0, 0.2, 1), visibility 0.8s;
+}
+#overlay.hidden { opacity: 0; visibility: hidden; }
+.click-text { font-size: 20px; letter-spacing: 2px; color: white; }
+
+/* KART VE İÇERİK */
+.container {
+    opacity: 0; transform: scale(0.9);
+    transition: opacity 1s ease, transform 1s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+.container.active { opacity: 1; transform: scale(1); }
 
 .card {
     background: rgba(0, 0, 0, 0.6);
-    width: 350px; padding: 20px; border-radius: 15px; text-align: center;
+    width: 350px; padding: 25px; border-radius: 15px; text-align: center;
     backdrop-filter: blur(10px); border: 1px solid rgba(255, 255, 255, 0.1);
     position: relative; transition: all 0.8s ease;
 }
@@ -19,27 +40,26 @@ body.dark-theme #night-bg { opacity: 1; }
 body.dark-theme .card { filter: grayscale(100%); background: rgba(0, 0, 0, 0.8); }
 body.light-theme .card { filter: grayscale(0%); background: rgba(255, 255, 255, 0.85); color: #111; }
 
-.logo { width: 80px; height: 80px; border-radius: 50%; margin-bottom: 10px; }
-h1 { font-size: 20px; }
-.username { font-size: 11px; opacity: 0.6; margin-bottom: 10px; }
+.logo { width: 85px; height: 85px; border-radius: 50%; margin-bottom: 10px; }
+h1 { font-size: 22px; }
+.username { font-size: 11px; opacity: 0.6; margin-bottom: 12px; }
 
-.mood-section { margin: 10px 0; padding: 8px; background: rgba(255, 255, 255, 0.05); border-radius: 8px; }
-.mood-title { font-family: 'Inter', sans-serif; font-size: 8px; opacity: 0.5; text-transform: uppercase; }
-.mood-text { font-family: 'Dancing Script', cursive; font-size: 16px; color: #00a2ff; min-height: 24px; }
+.mood-section { margin: 12px 0; padding: 10px; background: rgba(255, 255, 255, 0.05); border-radius: 10px; }
+.mood-title { font-family: 'Inter', sans-serif; font-size: 8px; opacity: 0.5; text-transform: uppercase; letter-spacing: 1px; }
+.mood-text { font-family: 'Dancing Script', cursive; font-size: 17px; color: #00a2ff; min-height: 25px; }
 body.light-theme .mood-text { color: #d11212; }
 
-.links { display: flex; justify-content: center; gap: 15px; margin-bottom: 10px; }
-.links a { color: inherit; font-size: 20px; transition: 0.3s; }
+.links { display: flex; justify-content: center; gap: 15px; margin-bottom: 15px; }
+.links a { color: inherit; font-size: 22px; transition: 0.3s; }
 .links a:hover { transform: scale(1.2); text-shadow: 0 0 10px white; }
 
-.visitor { font-size: 9px; opacity: 0.5; }
+.visitor { font-size: 9px; opacity: 0.4; }
 
-#themeBtn, #muteBtn { position: absolute; top: 12px; background: none; border: none; font-size: 16px; color: inherit; opacity: 0.7; }
-#themeBtn { right: 12px; }
-#muteBtn { left: 12px; }
+/* BUTONLAR */
+#themeBtn, #muteBtn { position: absolute; top: 12px; background: none; border: none; font-size: 18px; color: inherit; opacity: 0.7; }
+#themeBtn { right: 15px; }
+#muteBtn { left: 15px; }
 
-#overlay { position: fixed; inset: 0; background: #000; display: flex; justify-content: center; align-items: center; z-index: 9999; }
-.click-text { font-size: 20px; letter-spacing: 2px; }
-
+/* İMLEÇ */
 #cursor { width: 6px; height: 6px; background: white; border-radius: 50%; position: fixed; pointer-events: none; z-index: 10000; transform: translate(-50%, -50%); }
 #cursor-blur { width: 30px; height: 30px; border: 1px solid rgba(255, 255, 255, 0.4); border-radius: 50%; position: fixed; pointer-events: none; z-index: 9999; transform: translate(-50%, -50%); transition: transform 0.1s ease-out; }
