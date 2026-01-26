@@ -48,9 +48,12 @@ overlay.onclick = () => {
 const themeBtn = document.getElementById("themeBtn");
 
 themeBtn.onclick = () => {
-  document.body.classList.toggle("light");
+  const themeBtn = document.getElementById("themeBtn");
 
-  if (document.body.classList.contains("light")) {
+themeBtn.onclick = () => {
+  document.body.classList.toggle("night");
+
+  if (document.body.classList.contains("night")) {
     themeBtn.textContent = "☀️";
   } else {
     themeBtn.textContent = "🌙";
