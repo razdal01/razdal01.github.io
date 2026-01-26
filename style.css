@@ -77,3 +77,13 @@ body {
     margin-top: 15px;
     font-size: 14px;
 }
+
+.links i {
+    font-family: "Font Awesome 6 Brands" !important;
+}
+
+.links a {
+    text-decoration: none;
+}
+
+
