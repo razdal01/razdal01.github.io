@@ -1,29 +1,31 @@
+import { createClient } from "https://esm.sh/@supabase/supabase-js@2";
+
+const supabaseUrl = "https://thlhymoqiiohoosxngjg.supabase.co";
+const supabaseKey = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InRobGh5bW9xaWlvaG9vc3huZ2pnIiwicm9sZSI6ImFub24iLCJpYXQiOjE3Njk0MTI5NzUsImV4cCI6MjA4NDk4ODk3NX0.cqyxKvGKrfJrfbAh_yx0AygHynwWSVaZa1kg713ZdJg";
+
+const supabase = createClient(supabaseUrl, supabaseKey);
+
 const overlay = document.getElementById("overlay");
 const clickSound = document.getElementById("clickSound");
 const bgMusic = document.getElementById("bgMusic");
+const counter = document.getElementById("visitorCount");
 
-// CLICK TO VIEW
-overlay.addEventListener("click", () => {
-    clickSound.currentTime = 0;
-    clickSound.play();
+overlay.addEventListener("click", async () => {
+  overlay.style.display = "none";
+  clickSound.play();
+  bgMusic.play();
 
-    bgMusic.volume = 0.6;
-    bgMusic.play();
+  await supabase.rpc("increment_visits");
 
-    overlay.classList.add("hide");
+  const { data, error } = await supabase
+    .from("visitors")
+    .select("count")
+    .eq("id", 1)
+    .single();
+
+  if (!error) {
+    counter.innerText = data.count;
+  } else {
+    counter.innerText = "error";
+  }
 });
-
-// VISITOR COUNTER (COUNTAPI)
-const namespace = "razdal01-github";
-const key = "visitors";
-
-fetch(`https://api.countapi.xyz/hit/${namespace}/${key}`)
-    .then(res => res.json())
-    .then(data => {
-        document.getElementById("visitorCount").innerText = data.value;
-    })
-    .catch(err => {
-        console.error(err);
-        document.getElementById("visitorCount").innerText = "0";
-    });
-
