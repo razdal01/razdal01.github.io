@@ -12,19 +12,20 @@ body {
     justify-content: center;
     align-items: center;
     color: white;
-    transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1); /* Yumuşak geçiş efekti */
+    overflow: hidden;
+    transition: background 0.6s ease, color 0.6s ease;
 }
 
-/* Lacivert/Karanlık Tema Filtresi */
+/* Lacivert Filtre */
 body.dark-theme::before {
     content: "";
     position: fixed;
     inset: 0;
-    background: rgba(0, 15, 40, 0.8); /* Lacivert tonu */
+    background: rgba(0, 15, 40, 0.8);
     z-index: -1;
-    transition: opacity 0.6s ease;
 }
 
+/* CLICK TO VIEW EKRANI */
 #overlay {
     position: fixed;
     inset: 0;
@@ -33,22 +34,35 @@ body.dark-theme::before {
     justify-content: center;
     align-items: center;
     cursor: pointer;
-    z-index: 999;
+    z-index: 9999;
+    opacity: 1;
+    transition: opacity 0.8s ease, visibility 0.8s ease;
+}
+
+/* Tıklandıktan sonra gizleme class'ı */
+#overlay.hidden {
+    opacity: 0;
+    visibility: hidden;
 }
 
 .click-text {
     font-size: 32px;
     letter-spacing: 3px;
-    animation: blink 2s infinite;
+    color: white;
 }
 
-@keyframes blink {
-    0%, 100% { opacity: 1; }
-    50% { opacity: 0.3; }
-}
-
+/* ANA İÇERİK */
 .container {
-    display: none; /* JS ile açılacak */
+    opacity: 0;
+    transform: scale(0.9);
+    transition: all 0.8s ease-out;
+    z-index: 1;
+}
+
+/* Giriş yapınca içeriği göster */
+.container.active {
+    opacity: 1;
+    transform: scale(1);
 }
 
 .card {
@@ -56,24 +70,19 @@ body.dark-theme::before {
     padding: 30px 40px;
     border-radius: 20px;
     text-align: center;
-    backdrop-filter: blur(8px);
+    backdrop-filter: blur(10px);
     border: 1px solid rgba(255, 255, 255, 0.1);
-    transition: transform 0.3s ease, background 0.6s ease;
-}
-
-.card:hover {
-    transform: translateY(-5px);
+    position: relative;
 }
 
 .logo {
     width: 120px;
     border-radius: 50%;
     margin-bottom: 15px;
-    border: 3px solid rgba(255, 255, 255, 0.2);
 }
 
 .username { opacity: 0.7; }
-.status { margin-top: 10px; margin-bottom: 20px; font-size: 14px; }
+.status { margin-top: 10px; margin-bottom: 20px; }
 
 .links {
     display: flex;
@@ -85,15 +94,11 @@ body.dark-theme::before {
 .links a {
     color: white;
     font-size: 26px;
+    text-decoration: none;
     transition: 0.3s;
 }
 
-.links a:hover {
-    transform: scale(1.2);
-    color: #00a2ff;
-}
-
-.visitor { opacity: 0.7; margin-top: 10px; font-size: 12px; }
+.links a:hover { transform: scale(1.2); }
 
 #themeBtn {
     position: absolute;
@@ -106,21 +111,9 @@ body.dark-theme::before {
     color: white;
 }
 
-/* Light Mode Ayarları */
-body.light-theme {
-    background: #ffffff !important;
-    color: #111;
-}
-
-body.light-theme::before {
-    opacity: 0; /* Lacivert filtreyi kaldır */
-}
-
-body.light-theme .card {
-    background: rgba(255, 255, 255, 0.8);
-    color: #111;
-    border: 1px solid rgba(0,0,0,0.1);
-}
-
-body.light-theme .links a { color: #111; }
-body.light-theme #themeBtn { color: #111; }
+/* Light Mode */
+body.light-theme { background-color: #eee !important; color: #000; }
+body.light-theme::before { display: none; }
+body.light-theme .card { background: rgba(255,255,255,0.8); color: #000; }
+body.light-theme .links a { color: #000; }
+body.light-theme #themeBtn { color: #000; }
