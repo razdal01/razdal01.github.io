@@ -21,9 +21,9 @@ document.addEventListener("mousemove", (e) => {
 
 // TYPEWRITER YAZILARI
 const texts = [
-    "Demeyi unutmuşum bana bu linklerden birinden ulaşabilirsin!",
-    "gayet iyiyim",
-    "Bana abune olsana",
+    "Demeyi unutmuşum bana bu linklerden birinden ulaşabilirsin",
+    "can sıkıntıları hariç iyiyim",
+    "Baska yazıcak bisi bulamadım yav",
     
 ];
 let textIndex = 0, charIndex = 0, isDeleting = false;
