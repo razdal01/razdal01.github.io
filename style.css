@@ -6,6 +6,7 @@
 }
 
 body {
+    /* Gündüz Arka Planı */
     background: url("Background.png") center/cover no-repeat fixed;
     height: 100vh;
     display: flex;
@@ -13,28 +14,25 @@ body {
     align-items: center;
     color: white;
     overflow: hidden;
-    /* Tema geçiş hızı */
-    transition: background-color 0.8s ease, color 0.8s ease;
-    position: relative;
+    transition: color 1s ease;
 }
 
-/* Lacivert Filtre Katmanı */
-body::before {
-    content: "";
+/* Gece Arka Plan Katmanı (Background2.png) */
+#night-bg {
     position: fixed;
     inset: 0;
-    background: rgba(0, 15, 40, 0.85);
-    z-index: -1;
-    transition: background-color 0.8s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.8s ease;
+    background: url("Background2.png") center/cover no-repeat fixed;
+    z-index: -2;
+    opacity: 0;
+    transition: opacity 1.2s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-/* Gündüz Modu Filtre Değişimi */
-body.light-theme::before {
-    background: rgba(255, 255, 255, 0.1);
-    opacity: 0.2;
+/* Gece Modu aktifken Background2 yavaşça belirir */
+body.dark-theme #night-bg {
+    opacity: 1;
 }
 
-/* Click to View Ekranı */
+/* Giriş Ekranı */
 #overlay {
     position: fixed;
     inset: 0;
@@ -70,23 +68,32 @@ body.light-theme::before {
     transform: scale(1);
 }
 
-/* Profil Kartı */
+/* PROFIL KARTI VE EFEKT */
 .card {
-    background: rgba(0, 0, 0, 0.65);
+    background: rgba(0, 0, 0, 0.6);
     padding: 30px 40px;
     border-radius: 20px;
     text-align: center;
-    backdrop-filter: blur(12px);
+    backdrop-filter: blur(10px);
     border: 1px solid rgba(255, 255, 255, 0.15);
     position: relative;
-    transition: background 0.8s ease, color 0.8s ease, box-shadow 0.8s ease, transform 0.3s ease;
+    /* Kartın genel geçiş efekti */
+    transition: all 1s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
+/* Gece Modunda Kart Siyah-Beyaz Olsun */
+body.dark-theme .card {
+    filter: grayscale(100%); /* İşte o mükemmel dediğin siyah-beyaz efekt */
+    background: rgba(0, 0, 0, 0.75);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+/* Gündüz Modunda Kart Renkli ve Aydınlık */
 body.light-theme .card {
+    filter: grayscale(0%);
     background: rgba(255, 255, 255, 0.8);
     color: #111;
-    border: 1px solid rgba(0, 0, 0, 0.1);
-    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
 }
 
 .logo {
@@ -95,8 +102,6 @@ body.light-theme .card {
     margin-bottom: 15px;
     transition: transform 0.5s ease;
 }
-
-.card:hover .logo { transform: rotate(5deg) scale(1.05); }
 
 .username { opacity: 0.7; }
 .status { margin-top: 10px; margin-bottom: 20px; font-size: 14px; }
@@ -112,15 +117,11 @@ body.light-theme .card {
     color: inherit;
     font-size: 26px;
     text-decoration: none;
-    transition: transform 0.3s ease, color 0.3s ease;
+    transition: 0.3s;
 }
 
 .links a:hover { transform: scale(1.2); }
-body.dark-theme .links a:hover { color: #00a2ff; }
 
-.visitor { opacity: 0.7; margin-top: 10px; font-size: 12px; }
-
-/* Tema Butonu */
 #themeBtn {
     position: absolute;
     top: 15px;
@@ -130,12 +131,10 @@ body.dark-theme .links a:hover { color: #00a2ff; }
     font-size: 22px;
     cursor: pointer;
     color: inherit;
-    transition: transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    transition: transform 0.5s ease;
 }
 
-#themeBtn:active { transform: scale(0.8) rotate(180deg); }
-
-/* Light Mode Global Renk Ayarı */
+/* Sayfa Gündüzken Body Arka Planı */
 body.light-theme {
-    background-color: #f5f5f5;
+    background-color: #f0f0f0;
 }
